@@ -5,136 +5,230 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Health Journal | 2026 Independent Medical Research</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Lora:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Lora:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         h1, h2, h3 { font-family: 'Lora', serif; }
         body { font-family: 'Inter', sans-serif; }
-        .article-card { transition: all 0.3s ease; }
+        .article-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        #search-overlay { transition: all 0.4s ease-in-out; }
+        .blur-bg { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
     </style>
 </head>
-<body class="bg-[#fcfdfd] text-slate-900 min-h-screen flex flex-col">
+<body class="bg-[#fcfdfd] text-slate-900 min-h-screen flex flex-col relative">
+
+    <div id="search-overlay" class="hidden fixed inset-0 bg-white/95 blur-bg z-[100] flex flex-col items-center pt-32 px-6 overflow-y-auto">
+        <button onclick="toggleSearch()" class="absolute top-10 right-10 text-slate-400 hover:text-slate-900 transition-all hover:rotate-90">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        
+        <div class="max-w-3xl w-full">
+            <span class="text-blue-600 font-black text-[10px] uppercase tracking-[0.4em] mb-6 block text-center">Global Research Intelligence</span>
+            
+            <div class="relative mb-12">
+                <input type="text" id="search-input" onkeyup="liveSearch()" placeholder="Search research, habits, or nutrients..." 
+                       class="w-full bg-transparent border-b-2 border-slate-200 py-6 text-3xl md:text-5xl font-light outline-none focus:border-blue-600 transition-all placeholder:text-slate-200">
+                <div class="absolute right-0 bottom-6 text-slate-300">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </div>
+            </div>
+
+            <div id="search-results-info" class="text-slate-400 text-sm font-medium mb-12 text-center italic">
+                Enter a keyword to filter our 2026 database...
+            </div>
+
+            <div id="quick-links" class="flex flex-wrap justify-center gap-6 opacity-60">
+                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Trending:</span>
+                <button onclick="fillSearch('Sleep')" class="text-xs font-bold hover:text-blue-600 uppercase tracking-[0.2em]">#Sleep</button>
+                <button onclick="fillSearch('Metabolism')" class="text-xs font-bold hover:text-blue-600 uppercase tracking-[0.2em]">#Metabolism</button>
+                <button onclick="fillSearch('Brain')" class="text-xs font-bold hover:text-blue-600 uppercase tracking-[0.2em]">#Cognition</button>
+            </div>
+        </div>
+    </div>
 
     <div class="bg-slate-950 text-white text-[10px] py-2.5 text-center uppercase tracking-[0.2em] font-bold border-b border-slate-800">
         Independent Peer-Reviewed Research • March 2026 Update
     </div>
 
     <nav class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            <a href="index.html" class="flex items-center space-x-2">
-                <div class="w-11 h-11 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-blue-500/20">H</div>
-                <span class="font-black text-2xl tracking-tighter uppercase text-slate-950">Health<span class="text-blue-700">Journal</span></span>
+        <div class="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2 group">
+                <div class="w-9 h-9 md:w-11 md:h-11 bg-blue-700 rounded-xl md:rounded-2xl flex items-center justify-center text-white font-extrabold text-lg md:text-xl shadow-lg shadow-blue-500/20 group-hover:bg-blue-800 transition-colors">H</div>
+                <span class="font-black text-xl md:text-2xl tracking-tighter uppercase text-slate-950">Health<span class="text-blue-700">Journal</span></span>
             </a>
-            <div class="hidden md:flex space-x-10 text-xs font-bold text-slate-600 uppercase tracking-widest">
+            
+            <div class="hidden md:flex space-x-10 text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
                 <a href="metabolism-report.html" class="hover:text-blue-700 transition-colors">Metabolism</a>
                 <a href="exotic-nutrients-report.html" class="hover:text-blue-700 transition-colors">Cognition</a>
                 <a href="mitochondrial-nutrition.html" class="hover:text-blue-700 transition-colors">Nutrition</a>
                 <a href="biological-age-habits.html" class="hover:text-blue-700 transition-colors">Longevity</a>
-                <a href="WARMUP/sleep-hygiene.html" class="hover:text-blue-700 transition-colors">Sleep</a>
+                <a href="WARMUP/sleep-hygiene.html" class="hover:text-blue-700 transition-colors text-blue-600">Sleep</a>
             </div>
-            <button class="text-slate-400 hover:text-blue-700">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+
+            <button onclick="toggleSearch()" class="text-slate-400 hover:text-blue-700 p-2 transition-all">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 py-16 md:py-24 flex-grow">
+    <main class="max-w-7xl mx-auto px-6 py-12 md:py-24 flex-grow w-full">
         
-        <a href="WARMUP/sleep-hygiene.html" class="group block mb-24">
-            <section class="grid md:grid-cols-12 gap-12 border-b border-slate-100 pb-20">
-                <div class="md:col-span-7">
-                    <div class="overflow-hidden rounded-3xl bg-slate-100 aspect-[16/10] shadow-2xl shadow-slate-100">
-                        <img src="WARMUP\img\sleep-study-report-limpo.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Neurological Sleep Study">
+        <div id="main-feature">
+            <a href="WARMUP/sleep-hygiene.html" class="group block mb-24">
+                <section class="grid md:grid-cols-12 gap-12 border-b border-slate-100 pb-20">
+                    <div class="md:col-span-7">
+                        <div class="overflow-hidden rounded-3xl bg-slate-100 aspect-[16/10] shadow-2xl shadow-slate-100">
+                            <img src="WARMUP/img/sleep-study-report-limpo.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Neurological Sleep Study">
+                        </div>
                     </div>
-                </div>
-                <div class="md:col-span-5 flex flex-col justify-center">
-                    <span class="inline-block bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6">Featured Research</span>
-                    <h1 class="text-5xl md:text-6xl font-bold text-slate-950 leading-[1.1] mb-6 group-hover:text-blue-700 transition-colors">Decoding the 'Tropical Ritual' and Neural Rest.</h1>
-                    <p class="text-lg text-slate-600 leading-relaxed mb-10">New research synthesizes how precise core temperature regulation during sleep cycles significantly optimizes memory retention and focus.</p>
-                    <span class="font-bold text-blue-700 border-b-2 border-blue-700 pb-1 w-fit">Read Full Report →</span>
-                </div>
-            </section>
-        </a>
+                    <div class="md:col-span-5 flex flex-col justify-center">
+                        <span class="inline-block bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100">Featured Research</span>
+                        <h1 class="text-4xl md:text-6xl font-bold text-slate-950 leading-[1.1] mb-6 group-hover:text-blue-700 transition-colors">Decoding the 'Tropical Ritual' and Neural Rest.</h1>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-10">New research synthesizes how precise core temperature regulation during sleep cycles significantly optimizes memory retention and executive focus.</p>
+                        <span class="font-black text-[11px] uppercase tracking-widest text-blue-700 border-b-2 border-blue-700 pb-1 w-fit">Read Full Report →</span>
+                    </div>
+                </section>
+            </a>
+        </div>
 
-        <section>
-            <div class="flex items-center justify-between mb-12">
-                <h2 class="text-3xl font-bold italic">Latest Peer-Reviewed Dispatches</h2>
+        <section id="articles-grid-section">
+            <div class="flex items-center justify-between mb-16">
+                <h2 class="text-3xl font-bold italic text-slate-900 tracking-tight">Latest Peer-Reviewed Dispatches</h2>
                 <div class="h-px bg-slate-100 flex-grow ml-10"></div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div id="articles-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
                 
-                <a href="metabolism-report.html" class="article-card group block">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-5 relative shadow-md">
-                        <div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">⚖️</div>
+                <a href="metabolism-report.html" class="article-card group block" data-tags="metabolism weight fat adipose brain">
+                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
+                        <img src="WARMUP/img/Metabolism.webp" class="card-img group-hover:scale-110" alt="Metabolism Science">
                     </div>
-                    <span class="text-blue-700 font-bold text-[10px] uppercase tracking-[0.2em]">Metabolism</span>
+                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Metabolism</span>
                     <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">The Adipose-Brain Axis: A 2026 Breakthrough</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">How the brain signals fat storage based on temperature...</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Understanding how the brain signals fat storage based on temperature...</p>
                 </a>
 
-                <a href="mitochondrial-nutrition.html" class="article-card group block">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-5 relative shadow-md">
-                        <div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🥗</div>
+                <a href="mitochondrial-nutrition.html" class="article-card group block" data-tags="nutrition energy mitochondria matrix food">
+                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
+                        <img src="WARMUP/img/Nutrition.webp" class="card-img group-hover:scale-110" alt="Mitochondrial Nutrition">
                     </div>
-                    <span class="text-blue-700 font-bold text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
+                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
                     <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">The Micro-Nutrient Matrix for Energy</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">New findings on polyphenol blends and mitochondria...</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">New findings on polyphenol blends and cellular rejuvenation...</p>
                 </a>
 
-                <a href="biological-age-habits.html" class="article-card group block">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-5 relative shadow-md">
-                        <div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🧘</div>
+                <a href="biological-age-habits.html" class="article-card group block" data-tags="longevity biological habits aging inflammation">
+                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
+                        <img src="WARMUP/img/Longevity.webp" class="card-img group-hover:scale-110" alt="Longevity Habits">
                     </div>
-                    <span class="text-blue-700 font-bold text-[10px] uppercase tracking-[0.2em]">Longevity</span>
+                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Longevity</span>
                     <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">5 Habits for Biological Age Reduction</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Data-driven approaches to lowering systemic inflammation...</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Data-driven approaches to lowering systemic inflammation levels...</p>
                 </a>
 
-                <a href="exotic-nutrients-report.html" class="article-card group block">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-5 relative shadow-md">
-                        <div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🔬</div>
+                <a href="exotic-nutrients-report.html" class="article-card group block" data-tags="cognition brain repair exotic rainforest">
+                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
+                        <img src="WARMUP/img/cognitive.webp" class="card-img group-hover:scale-110" alt="Cognitive Discoveries">
                     </div>
-                    <span class="text-blue-700 font-bold text-[10px] uppercase tracking-[0.2em]">Discoveries</span>
+                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Discoveries</span>
                     <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">Exotic Nutrients in Cognitive Repair</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Reviewing the efficacy of rainforest plant compounds...</p>
+                    <p class="text-sm text-slate-500 leading-relaxed">Reviewing the efficacy of rare rainforest plant compounds...</p>
                 </a>
 
             </div>
         </section>
     </main>
 
-    <footer class="bg-slate-950 text-slate-400 py-24 px-6 mt-20">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-800 pb-20 mb-12">
-            
+    <footer class="bg-slate-950 text-slate-400 py-24 px-6 mt-20 text-left">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-800 pb-16 mb-12">
             <div class="md:col-span-2 pr-10">
-                <div class="flex items-center space-x-2 mb-6">
-                    <div class="w-9 h-9 bg-blue-700 rounded-xl flex items-center justify-center text-white font-extrabold text-lg">H</div>
+                <div class="flex items-center space-x-2 mb-8">
+                    <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-black text-lg">H</div>
                     <span class="font-black text-xl tracking-tighter uppercase text-white">Health<span class="text-blue-700">Journal</span></span>
                 </div>
-                <p class="text-sm leading-relaxed mb-4">The information provided by Health Journal is for educational and informational purposes only. It is not intended as medical advice. Always consult a physician before starting any diet, supplement, or exercise program.</p>
-                <p class="text-xs text-slate-600">© 2026 Health Journal Research Group. All rights reserved.</p>
+                <p class="text-sm leading-relaxed mb-6 font-medium">The information provided by Health Journal is for educational and informational purposes only. It is not intended as medical advice. Always consult a physician before starting any diet or supplement program.</p>
+                <p class="text-[10px] text-slate-600 font-black tracking-widest uppercase italic">© 2026 Health Journal Research Group • Peer-Reviewed Global Edition</p>
             </div>
-
             <div class="text-sm space-y-4">
-                <h4 class="text-white font-bold uppercase tracking-widest mb-6">Legal</h4>
+                <h4 class="text-white font-black uppercase tracking-[0.2em] mb-6 text-[10px]">Compliance</h4>
                 <a href="privacy.html" class="block hover:text-white transition-colors">Privacy Policy</a>
                 <a href="terms.html" class="block hover:text-white transition-colors">Terms of Service</a>
                 <a href="contact.html" class="block hover:text-white transition-colors">Contact Us</a>
             </div>
-
             <div class="text-sm space-y-4">
-                <h4 class="text-white font-bold uppercase tracking-widest mb-6">About Us</h4>
-                <a href="#" class="block hover:text-white transition-colors">Editorial Team</a>
-                <a href="#" class="block hover:text-white transition-colors">Research Standards</a>
+                <h4 class="text-white font-black uppercase tracking-[0.2em] mb-6 text-[10px]">Journal Info</h4>
+                <a href="#" class="block hover:text-white transition-colors">Editorial Standards</a>
+                <a href="#" class="block hover:text-white transition-colors">Peer Review Process</a>
                 <a href="#" class="block hover:text-white transition-colors">Methodology</a>
             </div>
-
         </div>
-        
-        <div class="max-w-7xl mx-auto text-[10px] uppercase tracking-[0.2em] font-bold text-center text-slate-600">
-            Health Journal is an independent publication and is not endorsed by or affiliated with Google LLC, Meta Platforms Inc., or any governmental health agency.
+        <div class="max-w-7xl mx-auto text-[10px] uppercase tracking-[0.3em] font-black text-center text-slate-700 leading-relaxed">
+            Independent publication not endorsed by or affiliated with Google LLC, Meta Platforms Inc., or governmental agencies.
         </div>
     </footer>
 
+    <script>
+        function toggleSearch() {
+            const overlay = document.getElementById('search-overlay');
+            const input = document.getElementById('search-input');
+            const body = document.body;
+
+            if (overlay.classList.contains('hidden')) {
+                overlay.classList.remove('hidden');
+                body.style.overflow = 'hidden';
+                setTimeout(() => { input.focus(); }, 100);
+            } else {
+                overlay.classList.add('hidden');
+                body.style.overflow = 'auto';
+            }
+        }
+
+        function fillSearch(term) {
+            document.getElementById('search-input').value = term;
+            liveSearch();
+        }
+
+        function liveSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const cards = document.getElementsByClassName('article-card');
+            const info = document.getElementById('search-results-info');
+            const mainFeature = document.getElementById('main-feature');
+            const quickLinks = document.getElementById('quick-links');
+            let foundCount = 0;
+
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].querySelector('h3').innerText.toLowerCase();
+                const tags = cards[i].getAttribute('data-tags') ? cards[i].getAttribute('data-tags').toLowerCase() : "";
+                
+                if (title.includes(query) || tags.includes(query)) {
+                    cards[i].style.display = "block";
+                    foundCount++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+
+            if (query.length > 0) {
+                mainFeature.style.display = "none";
+                quickLinks.style.opacity = "0";
+                info.innerHTML = foundCount > 0 ? 
+                    `Displaying <span class="text-blue-600 font-black tracking-widest uppercase underline underline-offset-4 decoration-2">${foundCount}</span> matching reports` : 
+                    `No reports found for "${query}"`;
+            } else {
+                mainFeature.style.display = "block";
+                quickLinks.style.opacity = "0.6";
+                info.innerText = "Enter a keyword to filter our 2026 database...";
+                for (let i = 0; i < cards.length; i++) { cards[i].style.display = "block"; }
+            }
+        }
+
+        // ESC para fechar
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                const overlay = document.getElementById('search-overlay');
+                if (!overlay.classList.contains('hidden')) toggleSearch();
+            }
+        });
+    </script>
 </body>
 </html>

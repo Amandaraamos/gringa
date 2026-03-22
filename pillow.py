@@ -19,10 +19,10 @@ def clean_metadata(input_path, output_path):
 # --- FORMA CORRETA DE DEFINIR OS CAMINHOS ---
 
 # Caminho da imagem suja (usando 'r' para evitar erros de barra no Windows)
-origem = r"WARMUP/assets/sleep-study-report.jpg"
+origem = r"WARMUP\assets\Nutrition.jpg"
 
 # Caminho onde a imagem blindada será criada (já em .webp)
-destino = r"WARMUP/assets/sleep-study-report-limpo.webp"
+destino = r"WARMUP/img/Nutrition.webp"
 
 # Chamada da função passando as variáveis
 clean_metadata(origem, destino)

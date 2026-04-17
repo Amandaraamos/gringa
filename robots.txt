@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /QUIZ/
+Disallow: /ADVERTORIAL/
+Disallow: /PRESSEL/
+
+Sitemap: https://thehealthdailyreport.com/sitemap.xml

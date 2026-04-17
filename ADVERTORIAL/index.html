@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wellness Report 2026: New Scientific Findings</title>
+    <title>New Research on Core Temperature and Metabolic Health | The Health Daily Report</title>
+    <meta name="description" content="A look at new findings on the relationship between core body temperature and metabolic function, and what it could mean for wellness.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Lora:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* Ocultamos o botão inicialmente para o Warm-up e Anti-bot */
-        #cta-wrapper { display: none; }
+        h1, h2, h3 { font-family: 'Lora', serif; }
+        body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans leading-relaxed">
 
+    <div class="bg-amber-50 border-b border-amber-200 px-4 py-3 text-center">
+        <p class="text-amber-800 text-xs font-bold uppercase tracking-wider">Advertorial &mdash; This article contains affiliate links</p>
+    </div>
+
     <header class="bg-white border-b sticky top-0 z-50 py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-            <span class="text-2xl font-black text-blue-700 tracking-tighter">HEALTH<span class="text-slate-400 font-light">JOURNAL</span></span>
-            <nav class="hidden md:block text-sm font-medium text-slate-500 space-x-6">
-                <span>Science</span><span>Nutrition</span><span>Longevity</span>
+            <a href="../index.html" class="text-xl font-black text-blue-700 tracking-tighter uppercase">The Health <span class="text-slate-400 font-light">Daily Report</span></a>
+            <nav class="hidden md:flex text-sm font-medium text-slate-500 space-x-6">
+                <a href="../about.html" class="hover:text-blue-700">About</a>
+                <a href="../contact.html" class="hover:text-blue-700">Contact</a>
             </nav>
         </div>
     </header>
@@ -24,46 +31,85 @@
     <main class="max-w-3xl mx-auto px-6 py-12 bg-white mt-6 shadow-sm rounded-lg">
         <article>
             <h1 class="text-3xl md:text-5xl font-bold mb-6 text-slate-800 leading-tight">
-                New Study Explores the Relationship Between Core Temperature and Metabolic Health
+                New Research Explores the Relationship Between Core Temperature and Metabolic Health
             </h1>
 
             <div class="flex items-center text-sm text-slate-500 mb-8 border-b pb-4">
-                <span class="font-bold text-blue-600">By Dr. Julian Vance</span>
-                <span class="mx-2">•</span>
-                <span>Updated: March 19, 2026</span>
+                <span class="font-bold text-slate-700">By Sarah Mitchell</span>
+                <span class="mx-2">&bull;</span>
+                <span>Updated: April 2026</span>
             </div>
 
             <section class="space-y-6 text-lg text-slate-700">
-                <p>Researchers have recently uncovered fascinating insights into how the body regulates energy. While traditional methods focus solely on calories, new data suggests a deeper biological connection...</p>
-                
-                <p class="font-semibold text-slate-800 italic text-xl border-l-4 border-blue-500 pl-4">
-                    "The efficiency of our internal systems often depends on factors we previously overlooked," says Dr. Vance.
-                </p>
+                <p>Researchers have recently uncovered interesting insights into how the body regulates energy. While traditional approaches to weight management focus primarily on calories, emerging research suggests that internal body temperature may play a role in metabolic efficiency.</p>
 
-                <p>This discovery has led to the development of new support methods that are currently being tested worldwide with remarkable feedback from the community.</p>
+                <p>According to studies published in journals like <em>Diabetes</em> and <em>Cell Metabolism</em>, brown adipose tissue (brown fat) is activated by cooler temperatures and burns calories to generate heat. This process, called thermogenesis, has led some researchers to explore whether optimizing body temperature could support metabolic health.</p>
+
+                <blockquote class="border-l-4 border-blue-500 pl-4 italic text-xl text-slate-800 font-medium my-8">
+                    "Understanding the body's thermoregulation systems may open new avenues for supporting metabolic wellness," according to researchers at the National Institutes of Health.
+                </blockquote>
+
+                <p>While this research is still in its early stages, many people are exploring natural approaches to support their metabolism — including nutrition, sleep optimization, and temperature regulation strategies.</p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Want to Learn More?</h2>
+
+                <p>If you're interested in exploring this topic further, the presentation below provides a detailed overview of the research and some of the approaches people are using to support their metabolic health.</p>
             </section>
 
-            <div id="cta-wrapper" class="mt-12 p-8 bg-blue-50 rounded-2xl text-center border-2 border-dashed border-blue-200">
-                <h3 class="text-xl font-bold mb-4">Want to see the full presentation?</h3>
-                <p class="mb-6 text-slate-600 text-sm">Check availability for your region below.</p>
-                <button id="main-cta" onclick="handleAffiliateRedirect()" 
-                        class="bg-orange-500 hover:bg-orange-600 text-white font-extrabold py-5 px-10 rounded-full text-2xl shadow-xl transition-all hover:scale-105 active:scale-95">
-                    WATCH VIDEO NOW
+            <div class="mt-12 p-8 bg-blue-50 rounded-2xl text-center border border-blue-100">
+                <h3 class="text-xl font-bold mb-4">Watch the Full Presentation</h3>
+                <p class="mb-6 text-slate-600 text-sm">Learn more about the science behind body temperature and metabolism.</p>
+                <button onclick="handleAffiliateRedirect()"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-full text-lg shadow-lg transition-all hover:scale-105 active:scale-95">
+                    Watch Presentation
                 </button>
+                <p class="text-xs text-slate-400 mt-4">Clicking this button will take you to a third-party website. We may earn a commission from purchases made through this link.</p>
             </div>
         </article>
     </main>
 
     <footer class="mt-20 bg-slate-100 py-12 text-center text-slate-500 text-xs px-6">
         <div class="mb-6 space-x-4">
-            <a href="privacy.html" class="hover:text-blue-600">Privacy Policy</a>
-            <a href="terms.html" class="hover:text-blue-600">Terms of Service</a>
-            <a href="contact.html" class="hover:text-blue-600">Contact Us</a>
+            <a href="../privacy.html" class="hover:text-blue-600">Privacy Policy</a>
+            <a href="../terms.html" class="hover:text-blue-600">Terms of Service</a>
+            <a href="../contact.html" class="hover:text-blue-600">Contact Us</a>
+            <a href="../about.html" class="hover:text-blue-600">About Us</a>
         </div>
-        <p class="max-w-xl mx-auto mb-4">© 2026 HealthJournal. All rights reserved. This site is not a part of the Google website or Google Inc. Additionally, this site is NOT endorsed by Google in any way.</p>
-        <p class="max-w-2xl mx-auto italic border-t pt-4">IMPORTANT: This product is not intended to diagnose, treat, cure, or prevent any disease. Always consult with a professional before starting any supplement program.</p>
+        <p class="max-w-xl mx-auto mb-4">&copy; 2026 The Health Daily Report. All rights reserved.</p>
+        <p class="max-w-2xl mx-auto italic border-t pt-4 text-slate-400">Advertorial Disclosure: This page is an advertorial and contains affiliate links. The content is sponsored. Always consult with a healthcare professional before starting any supplement or health program.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Cookie management for tracking
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
+        }
+
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i].trim();
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+            }
+            return null;
+        }
+
+        // Capture GCLID if present
+        const urlParams = new URLSearchParams(window.location.search);
+        const gclid = urlParams.get('gclid');
+        if (gclid) {
+            setCookie('user_gclid', gclid, 30);
+        }
+
+        function handleAffiliateRedirect() {
+            const savedGclid = getCookie('user_gclid') || 'direct_visit';
+            const affiliateId = "amanda_leoo";
+            const vendor = "pivive";
+            window.location.href = `https://hop.clickbank.net/?affiliate=${affiliateId}&vendor=${vendor}&tid=${savedGclid}`;
+        }
+    </script>
 </body>
 </html>

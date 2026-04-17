@@ -3,237 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Health Daily Report | 2026 Independent Medical Research</title>
+    <title>The Health Daily Report | Evidence-Based Health & Wellness</title>
+    <meta name="description" content="The Health Daily Report — evidence-based articles on nutrition, sleep, metabolism, heart health, mental wellness, and longevity for Americans.">
     <meta name="google-site-verification" content="b-Xv3o8qb-xaMYHuMS9zyayS6z1QVf_C2D5jv1jjZsU" />
-
     <link rel="icon" href="favicon.png" sizes="any">
     <link rel="apple-touch-icon" href="favicon.png">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Lora:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         h1, h2, h3 { font-family: 'Lora', serif; }
         body { font-family: 'Inter', sans-serif; }
-        .article-card { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        #search-overlay { transition: all 0.4s ease-in-out; }
-        .blur-bg { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .article-card:hover .card-img { transform: scale(1.07); }
     </style>
 </head>
-<body class="bg-[#fcfdfd] text-slate-900 min-h-screen flex flex-col relative">
-
-    <div id="search-overlay" class="hidden fixed inset-0 bg-white/95 blur-bg z-[100] flex flex-col items-center pt-32 px-6 overflow-y-auto">
-        <button onclick="toggleSearch()" class="absolute top-10 right-10 text-slate-400 hover:text-slate-900 transition-all hover:rotate-90">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
-        </button>
-        
-        <div class="max-w-3xl w-full">
-            <span class="text-blue-600 font-black text-[10px] uppercase tracking-[0.4em] mb-6 block text-center">Global Research Intelligence</span>
-            
-            <div class="relative mb-12">
-                <input type="text" id="search-input" onkeyup="liveSearch()" placeholder="Search research, habits, or nutrients..." 
-                       class="w-full bg-transparent border-b-2 border-slate-200 py-6 text-3xl md:text-5xl font-light outline-none focus:border-blue-600 transition-all placeholder:text-slate-200">
-                <div class="absolute right-0 bottom-6 text-slate-300">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                </div>
-            </div>
-
-            <div id="search-results-info" class="text-slate-400 text-sm font-medium mb-12 text-center italic">
-                Enter a keyword to filter our 2026 database...
-            </div>
-
-            <div id="quick-links" class="flex flex-wrap justify-center gap-6 opacity-60">
-                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Trending:</span>
-                <button onclick="fillSearch('Sleep')" class="text-xs font-bold hover:text-blue-600 uppercase tracking-[0.2em]">#Sleep</button>
-                <button onclick="fillSearch('Metabolism')" class="text-xs font-bold hover:text-blue-600 uppercase tracking-[0.2em]">#Metabolism</button>
-                <button onclick="fillSearch('Brain')" class="text-xs font-bold hover:text-blue-600 uppercase tracking-[0.2em]">#Cognition</button>
-            </div>
-        </div>
-    </div>
+<body class="bg-[#f8fafc] text-slate-900 min-h-screen flex flex-col">
 
     <div class="bg-slate-950 text-white text-[10px] py-2.5 text-center uppercase tracking-[0.2em] font-bold border-b border-slate-800">
-        Independent Peer-Reviewed Research • March 2026 Update
+        Health &amp; Wellness Blog &bull; Evidence-Based Articles for Americans
     </div>
 
     <nav class="bg-white sticky top-0 z-50 border-b border-slate-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 h-20 md:h-24 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="flex items-center space-x-2 group">
-                <div class="w-9 h-9 md:w-11 md:h-11 bg-blue-700 rounded-xl md:rounded-2xl flex items-center justify-center text-white font-extrabold text-lg md:text-xl shadow-lg shadow-blue-500/20 group-hover:bg-blue-800 transition-colors">H</div>
-                <span class="font-black text-xl md:text-2xl tracking-tighter uppercase text-slate-950">Health<span class="text-blue-700">Journal</span></span>
+                <div class="w-10 h-10 bg-blue-700 rounded-2xl flex items-center justify-center text-white font-extrabold text-lg shadow-lg shadow-blue-500/20 group-hover:bg-blue-800 transition-colors">H</div>
+                <span class="font-black text-xl tracking-tighter uppercase text-slate-950">The Health <span class="text-blue-700">Daily Report</span></span>
             </a>
-            
-            <div class="hidden md:flex space-x-10 text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
+            <div class="hidden md:flex space-x-8 text-[11px] font-black text-slate-500 uppercase tracking-[0.2em]">
                 <a href="metabolism-report.html" class="hover:text-blue-700 transition-colors">Metabolism</a>
-                <a href="exotic-nutrients-report.html" class="hover:text-blue-700 transition-colors">Cognition</a>
                 <a href="mitochondrial-nutrition.html" class="hover:text-blue-700 transition-colors">Nutrition</a>
+                <a href="exotic-nutrients-report.html" class="hover:text-blue-700 transition-colors">Cognition</a>
                 <a href="biological-age-habits.html" class="hover:text-blue-700 transition-colors">Longevity</a>
-                <a href="WARMUP/sleep-hygiene.html" class="hover:text-blue-700 transition-colors text-blue-600">Sleep</a>
+                <a href="WARMUP/sleep-hygiene.html" class="hover:text-blue-700 transition-colors">Sleep</a>
             </div>
-
-            <button onclick="toggleSearch()" class="text-slate-400 hover:text-blue-700 p-2 transition-all">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 py-12 md:py-24 flex-grow w-full">
-        
-        <div id="main-feature">
-            <a href="WARMUP/sleep-hygiene.html" class="group block mb-24">
-                <section class="grid md:grid-cols-12 gap-12 border-b border-slate-100 pb-20">
-                    <div class="md:col-span-7">
-                        <div class="overflow-hidden rounded-3xl bg-slate-100 aspect-[16/10] shadow-2xl shadow-slate-100">
-                            <img src="WARMUP/img/sleep-study-report-limpo.webp" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Neurological Sleep Study">
+    <main class="flex-grow">
+
+        <!-- Hero Feature -->
+        <section class="max-w-7xl mx-auto px-6 pt-12 pb-16">
+            <a href="anti-inflammatory-foods.html" class="group block">
+                <div class="grid md:grid-cols-12 gap-10 items-center border-b border-slate-100 pb-16">
+                    <div class="md:col-span-7 order-2 md:order-1 flex flex-col justify-center">
+                        <span class="inline-block bg-green-50 text-green-700 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-5 border border-green-100 w-fit">Featured &bull; Nutrition</span>
+                        <h1 class="text-4xl md:text-[3.2rem] font-bold text-slate-950 leading-[1.1] mb-5 group-hover:text-blue-700 transition-colors">10 Anti-Inflammatory Foods to Add to Your Diet</h1>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-8">Chronic inflammation is linked to heart disease, diabetes, and Alzheimer's. Here are the foods with the strongest scientific backing for reducing it — and why they work at the molecular level.</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 font-bold text-xs border border-blue-200">SM</div>
+                            <span class="text-sm text-slate-500">Sarah Mitchell &bull; April 11, 2026 &bull; 7 min read</span>
                         </div>
                     </div>
-                    <div class="md:col-span-5 flex flex-col justify-center">
-                        <span class="inline-block bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest mb-6 border border-blue-100">Featured Research</span>
-                        <h1 class="text-4xl md:text-6xl font-bold text-slate-950 leading-[1.1] mb-6 group-hover:text-blue-700 transition-colors">Decoding the 'Tropical Ritual' and Neural Rest.</h1>
-                        <p class="text-lg text-slate-600 leading-relaxed mb-10">New research synthesizes how precise core temperature regulation during sleep cycles significantly optimizes memory retention and executive focus.</p>
-                        <span class="font-black text-[11px] uppercase tracking-widest text-blue-700 border-b-2 border-blue-700 pb-1 w-fit">Read Full Report →</span>
+                    <div class="md:col-span-5 order-1 md:order-2">
+                        <div class="overflow-hidden rounded-3xl bg-emerald-50 aspect-[4/3] shadow-xl">
+                            <img src="img/anti-inflammatory.svg" class="card-img" alt="Anti-inflammatory foods illustration">
+                        </div>
                     </div>
-                </section>
+                </div>
             </a>
-        </div>
+        </section>
 
-        <section id="articles-grid-section">
-            <div class="flex items-center justify-between mb-16">
-                <h2 class="text-3xl font-bold italic text-slate-900 tracking-tight">Latest Peer-Reviewed Dispatches</h2>
-                <div class="h-px bg-slate-100 flex-grow ml-10"></div>
+        <!-- Latest Articles Grid -->
+        <section class="max-w-7xl mx-auto px-6 pb-16">
+            <div class="flex items-center gap-6 mb-10">
+                <h2 class="text-2xl font-bold text-slate-900 whitespace-nowrap">Latest Articles</h2>
+                <div class="h-px bg-slate-200 flex-grow"></div>
             </div>
 
-            <div id="articles-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-                
-                <a href="metabolism-report.html" class="article-card group block" data-tags="metabolism weight fat adipose brain">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
-                        <img src="WARMUP/img/Metabolism.webp" class="card-img group-hover:scale-110" alt="Metabolism Science">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <a href="intermittent-fasting.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-orange-50 aspect-video">
+                        <img src="img/intermittent-fasting.svg" class="card-img" alt="Intermittent fasting">
                     </div>
-                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Metabolism</span>
-                    <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">The Adipose-Brain Axis: A 2026 Breakthrough</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Understanding how the brain signals fat storage based on temperature...</p>
+                    <div class="p-6">
+                        <span class="text-orange-600 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">Intermittent Fasting: What the Science Actually Says</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Behind the social media hype, what does the research really show about time-restricted eating?</p>
+                        <p class="text-xs text-slate-400 mt-4">April 7, 2026 &bull; 8 min read</p>
+                    </div>
                 </a>
 
-                <a href="mitochondrial-nutrition.html" class="article-card group block" data-tags="nutrition energy mitochondria matrix food">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
-                        <img src="WARMUP/img/Nutrition.webp" class="card-img group-hover:scale-110" alt="Mitochondrial Nutrition">
+                <a href="screen-time-eye-health.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-slate-100 aspect-video">
+                        <img src="img/screen-time.svg" class="card-img" alt="Screen time and eye health">
                     </div>
-                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
-                    <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">The Micro-Nutrient Matrix for Energy</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">New findings on polyphenol blends and cellular rejuvenation...</p>
+                    <div class="p-6">
+                        <span class="text-slate-600 font-black text-[10px] uppercase tracking-[0.2em]">Wellness</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">How Screen Time Affects Your Eyes — and What You Can Do</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Americans spend 7+ hours a day on screens. Here's what digital eye strain actually is and what works.</p>
+                        <p class="text-xs text-slate-400 mt-4">April 9, 2026 &bull; 7 min read</p>
+                    </div>
                 </a>
 
-                <a href="biological-age-habits.html" class="article-card group block" data-tags="longevity biological habits aging inflammation">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
-                        <img src="WARMUP/img/Longevity.webp" class="card-img group-hover:scale-110" alt="Longevity Habits">
+                <a href="hydration-myths.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-sky-50 aspect-video">
+                        <img src="img/hydration.svg" class="card-img" alt="Hydration myths">
                     </div>
-                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Longevity</span>
-                    <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">5 Habits for Biological Age Reduction</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Data-driven approaches to lowering systemic inflammation levels...</p>
+                    <div class="p-6">
+                        <span class="text-sky-600 font-black text-[10px] uppercase tracking-[0.2em]">Wellness</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">8 Glasses a Day? Common Hydration Myths Debunked by Science</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">The "8x8 rule" has no clear scientific origin. Here's what research actually shows about hydration needs.</p>
+                        <p class="text-xs text-slate-400 mt-4">March 22, 2026 &bull; 5 min read</p>
+                    </div>
                 </a>
 
-                <a href="exotic-nutrients-report.html" class="article-card group block" data-tags="cognition brain repair exotic rainforest">
-                    <div class="overflow-hidden rounded-2xl bg-slate-100 aspect-video mb-6 relative shadow-md">
-                        <img src="WARMUP/img/cognitive.webp" class="card-img group-hover:scale-110" alt="Cognitive Discoveries">
+                <a href="heart-health-cholesterol.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-red-50 aspect-video">
+                        <img src="img/heart-health.svg" class="card-img" alt="Heart health and cholesterol">
                     </div>
-                    <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Discoveries</span>
-                    <h3 class="text-xl font-bold mt-3 mb-3 group-hover:text-blue-700 transition-colors leading-tight">Exotic Nutrients in Cognitive Repair</h3>
-                    <p class="text-sm text-slate-500 leading-relaxed">Reviewing the efficacy of rare rainforest plant compounds...</p>
+                    <div class="p-6">
+                        <span class="text-red-600 font-black text-[10px] uppercase tracking-[0.2em]">Heart Health</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">Understanding Heart Health: What Your Cholesterol Numbers Really Mean</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Heart disease kills 695,000 Americans a year. Your HDL, LDL, and triglyceride numbers — explained clearly.</p>
+                        <p class="text-xs text-slate-400 mt-4">March 25, 2026 &bull; 7 min read</p>
+                    </div>
+                </a>
+
+                <a href="stress-anxiety-management.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-purple-50 aspect-video">
+                        <img src="img/stress-anxiety.svg" class="card-img" alt="Stress and anxiety management">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-purple-600 font-black text-[10px] uppercase tracking-[0.2em]">Mental Health</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">Managing Stress and Anxiety: What Actually Works, According to Research</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">Over 40 million Americans have anxiety disorders. Evidence-based strategies that science supports.</p>
+                        <p class="text-xs text-slate-400 mt-4">March 28, 2026 &bull; 8 min read</p>
+                    </div>
+                </a>
+
+                <a href="vitamin-d-deficiency.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-yellow-50 aspect-video">
+                        <img src="img/vitamin-d.svg" class="card-img" alt="Vitamin D deficiency">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-yellow-600 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">Vitamin D Deficiency in America: Are You Getting Enough?</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">42% of American adults are deficient in the "sunshine vitamin." Symptoms, risk factors, and solutions.</p>
+                        <p class="text-xs text-slate-400 mt-4">April 3, 2026 &bull; 7 min read</p>
+                    </div>
+                </a>
+
+                <a href="walking-health-benefits.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-blue-50 aspect-video">
+                        <img src="img/walking.svg" class="card-img" alt="Walking health benefits">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-blue-600 font-black text-[10px] uppercase tracking-[0.2em]">Fitness</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">How Many Steps a Day Do You Really Need? The 10,000-Step Myth, Debunked</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">The 10,000-step goal came from a 1965 Japanese marketing campaign, not a doctor. Here's what research shows.</p>
+                        <p class="text-xs text-slate-400 mt-4">April 5, 2026 &bull; 6 min read</p>
+                    </div>
+                </a>
+
+                <a href="gut-health-microbiome.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-green-50 aspect-video">
+                        <img src="img/gut-health.svg" class="card-img" alt="Gut health and microbiome">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-green-600 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">Your Gut Microbiome: What It Is and Why It Matters for Your Health</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">38 trillion microorganisms live in your gut. What they do, and how diet shapes them.</p>
+                        <p class="text-xs text-slate-400 mt-4">March 18, 2026 &bull; 8 min read</p>
+                    </div>
+                </a>
+
+                <a href="ultra-processed-foods.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-amber-50 aspect-video">
+                        <img src="img/ultra-processed.svg" class="card-img" alt="Ultra-processed foods">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-amber-600 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 group-hover:text-blue-700 transition-colors leading-snug">Ultra-Processed Foods: What They Are and Why They're So Hard to Quit</h3>
+                        <p class="text-sm text-slate-500 leading-relaxed">58% of American calorie intake comes from ultra-processed food. Here's what the research says about why it matters.</p>
+                        <p class="text-xs text-slate-400 mt-4">March 10, 2026 &bull; 7 min read</p>
+                    </div>
                 </a>
 
             </div>
         </section>
+
+        <!-- Divider -->
+        <div class="max-w-7xl mx-auto px-6"><div class="border-t border-slate-100"></div></div>
+
+        <!-- In-Depth Series -->
+        <section class="max-w-7xl mx-auto px-6 py-16">
+            <div class="flex items-center gap-6 mb-10">
+                <h2 class="text-2xl font-bold text-slate-900 whitespace-nowrap">In-Depth Series</h2>
+                <div class="h-px bg-slate-200 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <a href="metabolism-report.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-slate-100 aspect-video">
+                        <img src="WARMUP/img/Metabolism.webp" class="card-img" alt="Metabolism">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Metabolism</span>
+                        <h3 class="text-base font-bold mt-2 mb-1 group-hover:text-blue-700 transition-colors leading-snug">What Is the Adipose-Brain Connection?</h3>
+                        <p class="text-xs text-slate-400 mt-3">5 min read</p>
+                    </div>
+                </a>
+
+                <a href="mitochondrial-nutrition.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-slate-100 aspect-video">
+                        <img src="WARMUP/img/Nutrition.webp" class="card-img" alt="Nutrition">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Nutrition</span>
+                        <h3 class="text-base font-bold mt-2 mb-1 group-hover:text-blue-700 transition-colors leading-snug">Mitochondrial Health 101: Nutrients for Cellular Energy</h3>
+                        <p class="text-xs text-slate-400 mt-3">6 min read</p>
+                    </div>
+                </a>
+
+                <a href="biological-age-habits.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-slate-100 aspect-video">
+                        <img src="WARMUP/img/Longevity.webp" class="card-img" alt="Longevity">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Longevity</span>
+                        <h3 class="text-base font-bold mt-2 mb-1 group-hover:text-blue-700 transition-colors leading-snug">5 Daily Habits That May Help Slow Biological Aging</h3>
+                        <p class="text-xs text-slate-400 mt-3">6 min read</p>
+                    </div>
+                </a>
+
+                <a href="exotic-nutrients-report.html" class="article-card group block bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+                    <div class="overflow-hidden bg-slate-100 aspect-video">
+                        <img src="WARMUP/img/cognitive.webp" class="card-img" alt="Cognition">
+                    </div>
+                    <div class="p-5">
+                        <span class="text-blue-700 font-black text-[10px] uppercase tracking-[0.2em]">Cognition</span>
+                        <h3 class="text-base font-bold mt-2 mb-1 group-hover:text-blue-700 transition-colors leading-snug">Can Plant-Based Compounds Support Brain Health?</h3>
+                        <p class="text-xs text-slate-400 mt-3">7 min read</p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- Sleep & Mind Banner -->
+        <section class="bg-slate-950 py-16 px-6">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-6">
+                <a href="WARMUP/sleep-hygiene.html" class="article-card group block bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-blue-700 transition-colors">
+                    <div class="p-6">
+                        <span class="text-blue-400 font-black text-[10px] uppercase tracking-[0.2em]">Sleep</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 text-white group-hover:text-blue-400 transition-colors leading-snug">How Body Temperature Affects Sleep Quality</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">The key role of thermal regulation in deep sleep and memory consolidation.</p>
+                        <p class="text-xs text-slate-600 mt-4">5 min read</p>
+                    </div>
+                </a>
+                <a href="WARMUP/brain-habits.html" class="article-card group block bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-blue-700 transition-colors">
+                    <div class="p-6">
+                        <span class="text-blue-400 font-black text-[10px] uppercase tracking-[0.2em]">Cognitive Health</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 text-white group-hover:text-blue-400 transition-colors leading-snug">5 Essential Habits for Long-Term Cognitive Health</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Actionable, research-backed strategies to keep your mind sharp as you age.</p>
+                        <p class="text-xs text-slate-600 mt-4">6 min read</p>
+                    </div>
+                </a>
+                <a href="WARMUP/metabolic-science.html" class="article-card group block bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden hover:border-blue-700 transition-colors">
+                    <div class="p-6">
+                        <span class="text-blue-400 font-black text-[10px] uppercase tracking-[0.2em]">Metabolism</span>
+                        <h3 class="text-lg font-bold mt-2 mb-2 text-white group-hover:text-blue-400 transition-colors leading-snug">Body Temperature and Metabolism: What the Science Says</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">An overview of emerging research on how core body temperature may influence metabolic rate.</p>
+                        <p class="text-xs text-slate-600 mt-4">5 min read</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-slate-950 text-slate-400 py-24 px-6 mt-20 text-left">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-800 pb-16 mb-12">
-            <div class="md:col-span-2 pr-10">
-                <div class="flex items-center space-x-2 mb-8">
-                    <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center text-white font-black text-lg">H</div>
-                    <span class="font-black text-xl tracking-tighter uppercase text-white">Health<span class="text-blue-700">Journal</span></span>
+    <footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-slate-800 pb-12 mb-8">
+            <div class="md:col-span-2 pr-8">
+                <div class="flex items-center space-x-2 mb-6">
+                    <div class="w-9 h-9 bg-blue-700 rounded-xl flex items-center justify-center text-white font-black text-lg">H</div>
+                    <span class="font-black text-xl tracking-tighter uppercase text-white">The Health <span class="text-blue-700">Daily Report</span></span>
                 </div>
-                <p class="text-sm leading-relaxed mb-6 font-medium">The information provided by Health Journal is for educational and informational purposes only. It is not intended as medical advice. Always consult a physician before starting any diet or supplement program.</p>
-                <p class="text-[10px] text-slate-600 font-black tracking-widest uppercase italic">© 2026 Health Journal Research Group • Peer-Reviewed Global Edition</p>
+                <p class="text-sm leading-relaxed mb-4">An independent health and wellness publication. All content is for informational purposes only and is not a substitute for professional medical advice.</p>
+                <p class="text-[10px] text-slate-600 font-bold tracking-widest uppercase">&copy; 2026 The Health Daily Report. All rights reserved.</p>
             </div>
-            <div class="text-sm space-y-4">
-                <h4 class="text-white font-black uppercase tracking-[0.2em] mb-6 text-[10px]">Compliance</h4>
+            <div class="text-sm space-y-3">
+                <h4 class="text-white font-black uppercase tracking-widest mb-4 text-[10px]">Company</h4>
+                <a href="about.html" class="block hover:text-white transition-colors">About Us</a>
+                <a href="contact.html" class="block hover:text-white transition-colors">Contact</a>
                 <a href="privacy.html" class="block hover:text-white transition-colors">Privacy Policy</a>
                 <a href="terms.html" class="block hover:text-white transition-colors">Terms of Service</a>
-                <a href="contact.html" class="block hover:text-white transition-colors">Contact Us</a>
             </div>
-            <div class="text-sm space-y-4">
-                <h4 class="text-white font-black uppercase tracking-[0.2em] mb-6 text-[10px]">Journal Info</h4>
-                <a href="#" class="block hover:text-white transition-colors">Editorial Standards</a>
-                <a href="#" class="block hover:text-white transition-colors">Peer Review Process</a>
-                <a href="#" class="block hover:text-white transition-colors">Methodology</a>
+            <div class="text-sm space-y-3">
+                <h4 class="text-white font-black uppercase tracking-widest mb-4 text-[10px]">Topics</h4>
+                <a href="metabolism-report.html" class="block hover:text-white transition-colors">Metabolism</a>
+                <a href="mitochondrial-nutrition.html" class="block hover:text-white transition-colors">Nutrition</a>
+                <a href="exotic-nutrients-report.html" class="block hover:text-white transition-colors">Cognition</a>
+                <a href="biological-age-habits.html" class="block hover:text-white transition-colors">Longevity</a>
+                <a href="WARMUP/sleep-hygiene.html" class="block hover:text-white transition-colors">Sleep</a>
+                <a href="stress-anxiety-management.html" class="block hover:text-white transition-colors">Mental Health</a>
+                <a href="heart-health-cholesterol.html" class="block hover:text-white transition-colors">Heart Health</a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto text-[10px] uppercase tracking-[0.3em] font-black text-center text-slate-700 leading-relaxed">
-            Independent publication not endorsed by or affiliated with Google LLC, Meta Platforms Inc., or governmental agencies.
-        </div>
+        <p class="text-center text-[10px] uppercase tracking-[0.3em] font-bold text-slate-700">Independent Health &amp; Wellness Publication</p>
     </footer>
 
-    <script>
-        function toggleSearch() {
-            const overlay = document.getElementById('search-overlay');
-            const input = document.getElementById('search-input');
-            const body = document.body;
-
-            if (overlay.classList.contains('hidden')) {
-                overlay.classList.remove('hidden');
-                body.style.overflow = 'hidden';
-                setTimeout(() => { input.focus(); }, 100);
-            } else {
-                overlay.classList.add('hidden');
-                body.style.overflow = 'auto';
-            }
-        }
-
-        function fillSearch(term) {
-            document.getElementById('search-input').value = term;
-            liveSearch();
-        }
-
-        function liveSearch() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const cards = document.getElementsByClassName('article-card');
-            const info = document.getElementById('search-results-info');
-            const mainFeature = document.getElementById('main-feature');
-            const quickLinks = document.getElementById('quick-links');
-            let foundCount = 0;
-
-            for (let i = 0; i < cards.length; i++) {
-                const title = cards[i].querySelector('h3').innerText.toLowerCase();
-                const tags = cards[i].getAttribute('data-tags') ? cards[i].getAttribute('data-tags').toLowerCase() : "";
-                
-                if (title.includes(query) || tags.includes(query)) {
-                    cards[i].style.display = "block";
-                    foundCount++;
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-
-            if (query.length > 0) {
-                mainFeature.style.display = "none";
-                quickLinks.style.opacity = "0";
-                info.innerHTML = foundCount > 0 ? 
-                    `Displaying <span class="text-blue-600 font-black tracking-widest uppercase underline underline-offset-4 decoration-2">${foundCount}</span> matching reports` : 
-                    `No reports found for "${query}"`;
-            } else {
-                mainFeature.style.display = "block";
-                quickLinks.style.opacity = "0.6";
-                info.innerText = "Enter a keyword to filter our 2026 database...";
-                for (let i = 0; i < cards.length; i++) { cards[i].style.display = "block"; }
-            }
-        }
-
-        // ESC para fechar
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape") {
-                const overlay = document.getElementById('search-overlay');
-                if (!overlay.classList.contains('hidden')) toggleSearch();
-            }
-        });
-    </script>
 </body>
 </html>

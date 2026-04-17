@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#f0f9ff"/>
+  <defs><linearGradient id="g7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#bae6fd"/><stop offset="100%" stop-color="#0ea5e9"/></linearGradient></defs>
+  <rect x="0" y="300" width="800" height="150" fill="url(#g7)" opacity="0.3"/>
+  <text x="400" y="200" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Hydration</text>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="36" fill="#075985" text-anchor="middle">Myths Debunked</text>
+</svg>

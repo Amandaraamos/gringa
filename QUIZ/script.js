@@ -1,11 +1,11 @@
 const quizData = [
     {
         q: "How many minutes does it take you to fall asleep?",
-        options: ["< 15 Min", "15 - 30 Min", "31 - 60 Min", "Over an Hour"]
+        options: ["Less than 15 minutes", "15 - 30 minutes", "31 - 60 minutes", "Over an hour"]
     },
     {
-        q: "Do you experience 'Brain Fog' in the morning?",
-        options: ["Never", "Rarely", "Frequently", "Every Day"]
+        q: "Do you experience brain fog or grogginess in the morning?",
+        options: ["Never", "Rarely", "Frequently", "Every day"]
     },
     {
         q: "What is your current age group?",
@@ -21,7 +21,6 @@ function renderQuiz() {
     const bar = document.getElementById('progress-bar');
     const text = document.getElementById('progress-text');
 
-    // Atualiza progresso
     const percent = Math.round(((currentStep + 1) / (quizData.length + 1)) * 100);
     bar.style.width = percent + "%";
     text.innerText = percent + "%";
@@ -31,11 +30,10 @@ function renderQuiz() {
 
     quizData[currentStep].options.forEach(opt => {
         const btn = document.createElement('button');
-        // Estilo dos botões (Brancos com hover azul suave)
         btn.className = "p-6 bg-white border-2 border-slate-100 rounded-2xl text-slate-700 font-bold hover:border-blue-600 hover:bg-blue-50 hover:shadow-xl hover:shadow-blue-100 transition-all text-center";
         btn.innerText = opt;
         btn.onclick = () => {
-            if(currentStep < quizData.length - 1) {
+            if (currentStep < quizData.length - 1) {
                 currentStep++;
                 renderQuiz();
             } else {
@@ -52,7 +50,6 @@ function showLoading() {
     document.getElementById('progress-bar').style.width = "100%";
     document.getElementById('progress-text').innerText = "100%";
 
-    // Sequência de Checks (Muda cor e ícone)
     const steps = ['check-1', 'check-2', 'check-3'];
     steps.forEach((id, index) => {
         setTimeout(() => {
@@ -62,9 +59,8 @@ function showLoading() {
         }, (index + 1) * 1000);
     });
 
-    // Redirecionamento final após os checks
     setTimeout(() => {
-        const affiliateId = "amanda_leoo"; 
+        const affiliateId = "amanda_leoo";
         const vendor = "sleepwell";
         window.location.href = `https://hop.clickbank.net/?affiliate=${affiliateId}&vendor=${vendor}`;
     }, 4500);

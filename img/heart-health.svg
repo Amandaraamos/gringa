@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#fef2f2"/>
+  <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fca5a5"/><stop offset="100%" stop-color="#ef4444"/></linearGradient></defs>
+  <rect x="0" y="0" width="800" height="450" fill="url(#g6)" opacity="0.12"/>
+  <text x="400" y="200" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#991b1b" text-anchor="middle">Heart Health</text>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="36" fill="#b91c1c" text-anchor="middle">&amp; Cholesterol</text>
+</svg>
